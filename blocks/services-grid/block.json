@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-grid",
+	"version": "1.0.0",
+	"title": "Services Grid",
+	"category": "theme",
+	"icon": "admin-tools",
+	"description": "Display selected services from the Services CPT.",
+	"keywords": [ "services", "offerings", "grid" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// services"
+		},
+		"heading": {
+			"type": "string",
+			"default": "What I Offer"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Offer"
+		},
+		"description": {
+			"type": "string",
+			"default": "Professional development services tailored to your needs."
+		},
+		"linkText": {
+			"type": "string",
+			"default": "View all services →"
+		},
+		"linkUrl": {
+			"type": "string",
+			"default": "/services"
+		},
+		"postIds": {
+			"type": "string",
+			"default": "[]"
+		},
+		"count": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

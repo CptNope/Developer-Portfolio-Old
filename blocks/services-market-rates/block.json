@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-market-rates",
+	"version": "1.0.0",
+	"title": "Services Market Rates",
+	"category": "theme",
+	"icon": "chart-bar",
+	"description": "Market context bar showing competitor rate ranges for comparison.",
+	"keywords": [ "market", "rates", "comparison", "pricing" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"cards": {
+			"type": "string",
+			"default": "[{\"label\":\"Boston WP Agency Rate\",\"range\":\"$150–$250/hr\",\"note\":\"Agency overhead + markup\"},{\"label\":\"Senior WP Freelancer (US)\",\"range\":\"$80–$150/hr\",\"note\":\"National range, 5–10+ yrs exp\"},{\"label\":\"AI Consultant Freelance (US)\",\"range\":\"$150–$300/hr\",\"note\":\"Senior independent, tech hub\"},{\"label\":\"Cybersecurity Consultant\",\"range\":\"$100–$200/hr\",\"note\":\"Freelance, IT security focus\"}]"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

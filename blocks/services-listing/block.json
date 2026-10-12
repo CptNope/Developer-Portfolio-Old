@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-listing",
+	"version": "1.0.0",
+	"title": "Services Listing",
+	"category": "theme",
+	"icon": "admin-tools",
+	"description": "Full services page listing with hero header, service grid, and pagination.",
+	"keywords": [ "services", "offerings", "listing", "archive" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// services"
+		},
+		"heading": {
+			"type": "string",
+			"default": "What I Offer"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Offer"
+		},
+		"description": {
+			"type": "string",
+			"default": "Professional development services tailored to your needs."
+		},
+		"perPage": {
+			"type": "number",
+			"default": 9
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

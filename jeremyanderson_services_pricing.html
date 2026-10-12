@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services & Pricing — jeremyanderson.tech</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg:       #0a0c0f;
+    --surface:  #111318;
+    --surface2: #181c23;
+    --border:   #1e2330;
+    --text:     #e2e8f0;
+    --muted:    #64748b;
+    --dim:      #94a3b8;
+
+    --wp:    #3b82f6; --wp-bg:    rgba(59,130,246,0.1);
+    --ai:    #34d399; --ai-bg:    rgba(52,211,153,0.1);
+    --sec:   #f59e0b; --sec-bg:   rgba(245,158,11,0.1);
+    --maint: #a78bfa; --maint-bg: rgba(167,139,250,0.1);
+
+    --gold:  #f59e0b;
+    --white: #ffffff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; line-height: 1.7; }
+
+  /* ── HEADER ── */
+  .header {
+    padding: 64px 48px 56px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(135deg, #0c1220 0%, #0a0c0f 65%);
+    position: relative; overflow: hidden;
+  }
+  .header::before {
+    content:''; position:absolute; top:-120px; right:-80px;
+    width:500px; height:500px;
+    background:radial-gradient(circle,rgba(59,130,246,0.1) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .header::after {
+    content:''; position:absolute; bottom:-80px; left:300px;
+    width:360px; height:360px;
+    background:radial-gradient(circle,rgba(52,211,153,0.07) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--wp); margin-bottom:14px; }
+  .header h1 { font-family:'DM Serif Display',serif; font-size:46px; line-height:1.12; color:#fff; margin-bottom:10px; }
+  .header h1 em { font-style:italic; color:var(--ai); }
+  .header-sub { color:var(--muted); font-size:14px; max-width:600px; margin-bottom:30px; }
+  .header-chips { display:flex; gap:10px; flex-wrap:wrap; }
+  .chip { font-family:'DM Mono',monospace; font-size:11px; padding:5px 14px; border-radius:20px; border:1px solid var(--border); background:var(--surface2); color:var(--dim); }
+
+  /* ── MARKET CONTEXT ── */
+  .market-bar { background:var(--surface); border-bottom:1px solid var(--border); padding:24px 48px; }
+  .market-inner { max-width:1020px; margin:0 auto; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+  .market-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
+  .market-label { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+  .market-range { font-family:'DM Serif Display',serif; font-size:20px; color:#fff; margin-bottom:3px; }
+  .market-note { font-size:11px; color:var(--muted); }
+
+  /* ── SECTION WRAPPER ── */
+  .section { padding:56px 48px; border-bottom:1px solid var(--border); }
+  .section-inner { max-width:1020px; margin:0 auto; }
+  .section-tag { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.15em; text-transform:uppercase; padding:3px 10px; border-radius:4px; display:inline-block; margin-bottom:12px; }
+  .tag-wp   { background:var(--wp-bg);    color:var(--wp);   }
+  .tag-ai   { background:var(--ai-bg);    color:var(--ai);   }
+  .tag-sec  { background:var(--sec-bg);   color:var(--sec);  }
+  .tag-maint{ background:var(--maint-bg); color:var(--maint);}
+  .tag-rate { background:rgba(245,158,11,.1); color:var(--gold); }
+  .tag-pkg  { background:rgba(167,139,250,.1); color:#a78bfa; }
+
+  .section h2 { font-family:'DM Serif Display',serif; font-size:30px; color:#fff; margin-bottom:6px; }
+  .section-intro { color:var(--muted); font-size:14px; max-width:660px; margin-bottom:32px; }
+
+  /* ── SERVICE CARD ── */
+  .service-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .service-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    overflow:hidden; transition:border-color .15s;
+  }
+  .service-card:hover { border-color:#2a3050; }
+  .sc-top { padding:22px 24px 18px; border-bottom:1px solid var(--border); }
+  .sc-icon { font-size:22px; margin-bottom:10px; }
+  .sc-name { font-size:16px; font-weight:600; color:#fff; margin-bottom:6px; }
+  .sc-desc { font-size:13px; color:var(--dim); line-height:1.6; }
+  .sc-includes { padding:18px 24px; }
+  .sc-inc-label { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+  .sc-list { list-style:none; display:flex; flex-direction:column; gap:5px; }
+  .sc-list li { font-size:13px; color:var(--dim); padding-left:16px; position:relative; }
+  .sc-list li::before { content:'→'; position:absolute; left:0; font-size:11px; color:var(--wp); line-height:1.7; }
+
+  /* ── PRICING TABLE ── */
+  .pricing-table { width:100%; border-collapse:collapse; }
+  .pricing-table th {
+    font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted); text-align:left; padding:10px 16px; border-bottom:1px solid var(--border);
+  }
+  .pricing-table td { padding:13px 16px; font-size:13.5px; border-bottom:1px solid #13171f; vertical-align:top; }
+  .pricing-table tr:hover td { background:var(--surface); }
+  .pricing-table tr:last-child td { border-bottom:none; }
+  .pt-service { font-weight:600; color:#fff; }
+  .pt-sub { font-size:12px; color:var(--muted); margin-top:2px; }
+  .pt-rate { font-family:'DM Serif Display',serif; font-size:20px; color:var(--gold); }
+  .pt-note { font-size:12px; color:var(--muted); }
+  .pt-badge { font-family:'DM Mono',monospace; font-size:10px; padding:2px 8px; border-radius:4px; }
+  .badge-wp   { background:var(--wp-bg);    color:var(--wp);   }
+  .badge-ai   { background:var(--ai-bg);    color:var(--ai);   }
+  .badge-sec  { background:var(--sec-bg);   color:var(--sec);  }
+  .badge-maint{ background:var(--maint-bg); color:var(--maint);}
+
+  /* ── PROJECT PACKAGES ── */
+  .pkg-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .pkg-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:26px 24px; position:relative; overflow:hidden;
+    display:flex; flex-direction:column;
+  }
+  .pkg-card.featured { border-color:#3b82f6; }
+  .pkg-card.featured::before {
+    content:'MOST POPULAR';
+    position:absolute; top:14px; right:14px;
+    font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.1em;
+    background:var(--wp-bg); color:var(--wp); padding:3px 8px; border-radius:4px;
+  }
+  .pkg-eyebrow { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  .pkg-name { font-family:'DM Serif Display',serif; font-size:22px; color:#fff; margin-bottom:4px; }
+  .pkg-price { font-family:'DM Serif Display',serif; font-size:34px; color:var(--gold); line-height:1; margin-bottom:4px; }
+  .pkg-price-sub { font-size:12px; color:var(--muted); margin-bottom:16px; }
+  .pkg-desc { font-size:13px; color:var(--dim); margin-bottom:18px; line-height:1.6; }
+  .pkg-divider { height:1px; background:var(--border); margin-bottom:16px; }
+  .pkg-features { list-style:none; display:flex; flex-direction:column; gap:7px; flex:1; }
+  .pkg-features li { font-size:12.5px; color:var(--dim); padding-left:18px; position:relative; line-height:1.5; }
+  .pkg-features li::before { content:'✓'; position:absolute; left:0; font-size:11px; color:var(--ai); font-weight:700; }
+  .pkg-cta {
+    margin-top:20px; display:block; text-align:center;
+    background:var(--surface2); border:1px solid var(--border); color:var(--dim);
+    font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.05em;
+    padding:10px; border-radius:7px; text-decoration:none;
+  }
+  .pkg-cta.primary {
+    background:var(--wp); border-color:var(--wp); color:#fff;
+  }
+
+  /* ── RETAINER TIERS ── */
+  .retainer-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+  .retainer-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:12px;
+    padding:22px 20px; display:flex; flex-direction:column;
+  }
+  .ret-color-bar { height:3px; border-radius:2px; margin-bottom:18px; }
+  .ret-tier { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:5px; }
+  .ret-name { font-size:16px; font-weight:700; color:#fff; margin-bottom:12px; }
+  .ret-price { font-family:'DM Serif Display',serif; font-size:28px; color:var(--gold); line-height:1; }
+  .ret-period { font-size:12px; color:var(--muted); margin-bottom:14px; }
+  .ret-hours { font-size:13px; color:var(--dim); margin-bottom:14px; }
+  .ret-divider { height:1px; background:var(--border); margin-bottom:14px; }
+  .ret-list { list-style:none; display:flex; flex-direction:column; gap:5px; flex:1; }
+  .ret-list li { font-size:12px; color:var(--dim); padding-left:14px; position:relative; line-height:1.5; }
+  .ret-list li::before { content:'·'; position:absolute; left:0; color:var(--muted); font-size:18px; line-height:1; }
+
+  /* ── ADD-ONS ── */
+  .addon-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; }
+  .addon-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:10px;
+    padding:16px 18px; display:flex; gap:14px; align-items:start;
+  }
+  .addon-icon { font-size:20px; flex-shrink:0; margin-top:1px; }
+  .addon-name { font-size:13.5px; font-weight:600; color:#fff; margin-bottom:3px; }
+  .addon-price { font-family:'DM Mono',monospace; font-size:13px; color:var(--gold); margin-bottom:4px; }
+  .addon-desc { font-size:12px; color:var(--muted); line-height:1.5; }
+
+  /* ── COMPETITOR COMPARE ── */
+  .compare-table { width:100%; border-collapse:collapse; }
+  .compare-table th {
+    font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--muted); padding:10px 16px; text-align:center; border-bottom:1px solid var(--border);
+  }
+  .compare-table th:first-child { text-align:left; }
+  .compare-table td { padding:12px 16px; font-size:13px; border-bottom:1px solid #13171f; text-align:center; }
+  .compare-table td:first-child { text-align:left; font-weight:500; color:#fff; }
+  .compare-table tr:hover td { background:var(--surface); }
+  .compare-table .col-jeremy { background:rgba(59,130,246,0.05); }
+  .compare-table th.col-jeremy { color:var(--wp); background:rgba(59,130,246,0.08); border-radius:6px 6px 0 0; }
+  .check { color:var(--ai); font-size:16px; }
+  .cross { color:#475569; }
+  .partial { color:var(--gold); font-size:12px; }
+
+  /* ── FAQ / OBJECTIONS ── */
+  .faq-list { display:flex; flex-direction:column; gap:12px; }
+  .faq-item { background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:20px 24px; }
+  .faq-q { font-size:14px; font-weight:600; color:#fff; margin-bottom:8px; }
+  .faq-a { font-size:13px; color:var(--dim); line-height:1.65; }
+
+  /* ── CTA BOX ── */
+  .cta-box {
+    background: linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(52,211,153,0.08) 100%);
+    border:1px solid rgba(59,130,246,0.25); border-radius:14px;
+    padding:36px 40px; text-align:center;
+  }
+  .cta-box h3 { font-family:'DM Serif Display',serif; font-size:28px; color:#fff; margin-bottom:10px; }
+  .cta-box p { color:var(--dim); font-size:14px; max-width:540px; margin:0 auto 24px; }
+  .cta-buttons { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .btn-primary {
+    background:var(--wp); color:#fff; padding:12px 28px; border-radius:8px;
+    font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.05em; text-decoration:none; font-weight:500;
+  }
+  .btn-secondary {
+    background:var(--surface2); color:var(--dim); padding:12px 28px; border-radius:8px;
+    border:1px solid var(--border); font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.05em; text-decoration:none;
+  }
+
+  .footer { background:var(--surface); border-top:1px solid var(--border); padding:24px 48px; text-align:center; }
+  .footer p { font-family:'DM Mono',monospace; font-size:10px; color:var(--muted); letter-spacing:.05em; }
+
+  @media(max-width:760px){
+    .header { padding:40px 20px; }
+    .market-inner,.service-grid,.pkg-grid,.retainer-grid,.addon-grid { grid-template-columns:1fr; }
+    .section { padding:40px 20px; }
+    .market-bar { padding:20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="eyebrow">jeremyanderson.tech · Boston / Worcester, MA · 2026</div>
+  <h1>Services &amp;<br><em>Pricing Guide</em></h1>
+  <p class="header-sub">Market-calibrated rates for custom WordPress development, AI consulting, cybersecurity hardening, and ongoing support — serving Boston, Worcester, and the greater Massachusetts area.</p>
+  <div class="header-chips">
+    <span class="chip">25+ Years Experience</span>
+    <span class="chip">Based in Shrewsbury, MA</span>
+    <span class="chip">Serving Boston · Worcester · New England</span>
+    <span class="chip">Available Remotely</span>
+  </div>
+</div>
+
+<!-- MARKET CONTEXT -->
+<div class="market-bar">
+  <div class="market-inner">
+    <div class="market-card">
+      <div class="market-label">Boston WP Agency Rate</div>
+      <div class="market-range">$150–$250/hr</div>
+      <div class="market-note">Agency overhead + markup</div>
+    </div>
+    <div class="market-card">
+      <div class="market-label">Senior WP Freelancer (US)</div>
+      <div class="market-range">$80–$150/hr</div>
+      <div class="market-note">National range, 5–10+ yrs exp</div>
+    </div>
+    <div class="market-card">
+      <div class="market-label">AI Consultant Freelance (US)</div>
+      <div class="market-range">$150–$300/hr</div>
+      <div class="market-note">Senior independent, tech hub</div>
+    </div>
+    <div class="market-card">
+      <div class="market-label">Cybersecurity Consultant</div>
+      <div class="market-range">$100–$200/hr</div>
+      <div class="market-note">Freelance, IT security focus</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: HOURLY RATES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-rate">Hourly Rates</span>
+    <h2>Consulting &amp; Development Hours</h2>
+    <p class="section-intro">Hourly billing works best for audits, troubleshooting, open-ended consulting, and any project where scope is still being defined. Hours are tracked and reported transparently.</p>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Service Area</th>
+          <th>Rate</th>
+          <th>Typical Use Cases</th>
+          <th>Min. Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="pt-service">WordPress Development</div>
+            <div class="pt-sub"><span class="pt-badge badge-wp">WordPress</span></div>
+          </td>
+          <td><div class="pt-rate">$115/hr</div><div class="pt-note">Standard dev work</div></td>
+          <td class="pt-note">Theme customization, plugin dev, bug fixes, WooCommerce, performance tuning, FSE work</td>
+          <td class="pt-note">2 hrs</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="pt-service">AI Systems &amp; Consulting</div>
+            <div class="pt-sub"><span class="pt-badge badge-ai">AI</span></div>
+          </td>
+          <td><div class="pt-rate">$185/hr</div><div class="pt-note">AI strategy + build</div></td>
+          <td class="pt-note">RAG systems, local LLM setup, AI workflow design, prompt engineering, AI tool integration</td>
+          <td class="pt-note">2 hrs</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="pt-service">Cybersecurity Consulting</div>
+            <div class="pt-sub"><span class="pt-badge badge-sec">Security</span></div>
+          </td>
+          <td><div class="pt-rate">$135/hr</div><div class="pt-note">Hardening + audits</div></td>
+          <td class="pt-note">Security audits, WordPress hardening, log monitoring setup, SIEM configuration, compliance review</td>
+          <td class="pt-note">2 hrs</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="pt-service">Full-Stack / Custom Dev</div>
+            <div class="pt-sub"><span class="pt-badge badge-wp">React · Node.js · PHP</span></div>
+          </td>
+          <td><div class="pt-rate">$125/hr</div><div class="pt-note">Full-stack builds</div></td>
+          <td class="pt-note">React apps, Node.js backends, REST APIs, custom web applications, PWAs</td>
+          <td class="pt-note">2 hrs</td>
+        </tr>
+        <tr>
+          <td>
+            <div class="pt-service">Strategy &amp; Technical Advisory</div>
+            <div class="pt-sub"><span class="pt-badge badge-ai">Consulting</span></div>
+          </td>
+          <td><div class="pt-rate">$165/hr</div><div class="pt-note">Calls + roadmapping</div></td>
+          <td class="pt-note">Architecture planning, tech stack decisions, vendor evaluation, project scoping, AI roadmaps</td>
+          <td class="pt-note">1 hr</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:20px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:18px 22px;">
+      <span style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);">💡 Volume Discount</span>
+      <p style="font-size:13px; color:var(--dim); margin-top:6px;">Blocks of <strong style="color:#fff">20+ prepaid hours</strong> receive a <strong style="color:var(--gold)">10% discount</strong> off the applicable hourly rate. Hours remain valid for 90 days. Ideal for clients with ongoing ad-hoc work across multiple service areas.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: PROJECT PACKAGES — WORDPRESS -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-wp">WordPress Development</span>
+    <h2>WordPress Project Packages</h2>
+    <p class="section-intro">Fixed-fee packages for defined deliverables. Scope is documented and agreed before work begins. Includes one round of revisions unless noted otherwise.</p>
+
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Starter</div>
+        <div class="pkg-name">Business Site</div>
+        <div class="pkg-price">$3,500</div>
+        <div class="pkg-price-sub">flat fee · 3–4 week delivery</div>
+        <div class="pkg-desc">A clean, fast, mobile-friendly WordPress site for small local businesses that need a professional web presence without the agency price tag.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Up to 8 pages (Home, About, Services, Contact + 4 more)</li>
+          <li>Custom child theme or FSE theme configuration</li>
+          <li>Mobile responsive + Core Web Vitals optimized</li>
+          <li>On-page SEO setup (Yoast/RankMath, meta, schema)</li>
+          <li>Contact form + Google Maps integration</li>
+          <li>Basic security hardening + SSL</li>
+          <li>30-day post-launch support</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta">Get a Quote →</a>
+      </div>
+
+      <div class="pkg-card featured">
+        <div class="pkg-eyebrow">Most Requested</div>
+        <div class="pkg-name">Custom Platform</div>
+        <div class="pkg-price">$7,500</div>
+        <div class="pkg-price-sub">flat fee · 5–7 week delivery</div>
+        <div class="pkg-desc">A fully custom WordPress build with tailored functionality, custom plugin development, and a polished design system. The right fit for growing businesses and funded startups.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Unlimited pages, custom post types &amp; taxonomies</li>
+          <li>Custom plugin development (up to 2 features)</li>
+          <li>Full Site Editing theme with custom block patterns</li>
+          <li>Advanced SEO + local schema markup</li>
+          <li>Performance optimization (caching, CDN, image pipeline)</li>
+          <li>Security hardening + login protection</li>
+          <li>REST API integration (up to 1 third-party service)</li>
+          <li>CMS training session for your team</li>
+          <li>60-day post-launch support</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta primary">Get a Quote →</a>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Enterprise</div>
+        <div class="pkg-name">Complex System</div>
+        <div class="pkg-price">$15,000+</div>
+        <div class="pkg-price-sub">scoped + quoted · 8–12 weeks</div>
+        <div class="pkg-desc">Large-scale WordPress platforms, multi-site networks, complex plugin ecosystems, WooCommerce stores, and sites requiring advanced security or compliance requirements.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Architecture planning &amp; technical specification</li>
+          <li>Custom plugin suite (unlimited scope)</li>
+          <li>Multi-site / network configuration</li>
+          <li>WooCommerce with custom checkout &amp; integrations</li>
+          <li>SIEM/SOC dashboard integration for monitoring</li>
+          <li>Advanced security framework + compliance review</li>
+          <li>Load testing + scalability planning</li>
+          <li>Developer documentation + handoff</li>
+          <li>90-day post-launch support</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta">Schedule a Call →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: AI CONSULTING PACKAGES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-ai">AI Consulting</span>
+    <h2>AI Tool &amp; System Packages</h2>
+    <p class="section-intro">Practical, scoped AI engagements — not big-agency vaporware. Every AI project starts with a clear workflow problem and ends with a tool your team actually uses.</p>
+
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Jumpstart</div>
+        <div class="pkg-name">AI Discovery</div>
+        <div class="pkg-price">$1,200</div>
+        <div class="pkg-price-sub">flat fee · 1-week engagement</div>
+        <div class="pkg-desc">A focused advisory engagement to identify where AI can realistically help your business, what it would cost to build, and what to prioritize first.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>2-hour discovery workshop (remote)</li>
+          <li>Workflow audit — identify top 3 AI opportunities</li>
+          <li>Feasibility assessment for each opportunity</li>
+          <li>Build-vs-buy recommendation</li>
+          <li>Detailed written roadmap + cost estimates</li>
+          <li>30-min follow-up Q&amp;A call</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta">Book Discovery →</a>
+      </div>
+
+      <div class="pkg-card featured">
+        <div class="pkg-eyebrow">Build</div>
+        <div class="pkg-name">Custom AI Tool</div>
+        <div class="pkg-price">$8,500</div>
+        <div class="pkg-price-sub">starting price · scoped per project</div>
+        <div class="pkg-desc">Design and build a focused, production-ready AI tool that solves one real operational problem. RAG systems, conversational interfaces, log analyzers, document assistants, and more.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Full scope definition &amp; architecture document</li>
+          <li>Local or cloud LLM selection + setup</li>
+          <li>Vector database / RAG pipeline (if applicable)</li>
+          <li>Custom web interface or API integration</li>
+          <li>Prompt engineering + testing</li>
+          <li>Integration with existing systems (WordPress, etc.)</li>
+          <li>Documentation + staff training session</li>
+          <li>60-day post-launch support</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta primary">Get a Quote →</a>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Scale</div>
+        <div class="pkg-name">AI System Integration</div>
+        <div class="pkg-price">$20,000+</div>
+        <div class="pkg-price-sub">scoped + quoted · 8–14 weeks</div>
+        <div class="pkg-desc">End-to-end AI infrastructure for organizations ready to deploy AI across multiple workflows — including knowledge management, automation pipelines, and monitoring systems.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Multi-tool AI architecture design</li>
+          <li>Knowledge base + RAG system at scale</li>
+          <li>Automation workflow integration (n8n, custom)</li>
+          <li>AI-assisted monitoring &amp; alerting systems</li>
+          <li>Data privacy review + local LLM deployment options</li>
+          <li>Team training + change management support</li>
+          <li>Infrastructure documentation</li>
+          <li>90-day support + iteration sprints</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta">Schedule a Call →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: CYBERSECURITY PACKAGES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-sec">Cybersecurity</span>
+    <h2>Security &amp; Hardening Packages</h2>
+    <p class="section-intro">Practical security work for WordPress sites, web applications, and small business infrastructure. No scare tactics — just clear findings and real fixes.</p>
+
+    <div class="pkg-grid">
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Essential</div>
+        <div class="pkg-name">Security Audit</div>
+        <div class="pkg-price">$850</div>
+        <div class="pkg-price-sub">flat fee · delivered in 5 business days</div>
+        <div class="pkg-desc">A thorough review of your WordPress site's security posture with a prioritized remediation report. Know exactly what's at risk and what to fix first.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Plugin &amp; theme vulnerability scan</li>
+          <li>User roles &amp; permissions review</li>
+          <li>Login security &amp; 2FA assessment</li>
+          <li>SSL/TLS configuration check</li>
+          <li>File permission &amp; server config review</li>
+          <li>Written report with risk ratings + fix priority</li>
+          <li>30-min debrief call</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta">Order Audit →</a>
+      </div>
+
+      <div class="pkg-card featured">
+        <div class="pkg-eyebrow">Complete</div>
+        <div class="pkg-name">Hardening Package</div>
+        <div class="pkg-price">$2,400</div>
+        <div class="pkg-price-sub">flat fee · 1–2 week delivery</div>
+        <div class="pkg-desc">Audit plus full implementation — we don't just tell you what to fix, we fix it. Leaves your site in a measurably more secure state with documentation of every change made.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Full security audit (as above)</li>
+          <li>WordPress core, plugin &amp; theme hardening</li>
+          <li>Login protection + brute-force blocking</li>
+          <li>Two-factor authentication setup</li>
+          <li>Security headers + WAF configuration</li>
+          <li>Log monitoring setup (fail2ban, audit logs)</li>
+          <li>Malware scan + cleanup (if needed)</li>
+          <li>MDPA / compliance checklist review</li>
+          <li>Written documentation of all changes</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta primary">Get a Quote →</a>
+      </div>
+
+      <div class="pkg-card">
+        <div class="pkg-eyebrow">Infrastructure</div>
+        <div class="pkg-name">SIEM / SOC Setup</div>
+        <div class="pkg-price">$4,500+</div>
+        <div class="pkg-price-sub">scoped + quoted · 2–4 weeks</div>
+        <div class="pkg-desc">Design and deploy a centralized security monitoring system for organizations managing multiple WordPress sites or web applications across shared or distributed infrastructure.</div>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-features">
+          <li>Architecture design for multi-site monitoring</li>
+          <li>Centralized logging pipeline setup</li>
+          <li>Alert rules for common attack patterns</li>
+          <li>AI-assisted log analysis integration</li>
+          <li>Uptime + availability monitoring</li>
+          <li>Incident response runbook</li>
+          <li>Dashboard for non-technical staff</li>
+          <li>60-day support + tuning</li>
+        </ul>
+        <a href="mailto:info@jeremyanderson.tech" class="pkg-cta">Schedule a Call →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: MONTHLY RETAINERS -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-maint">Monthly Retainers</span>
+    <h2>Ongoing Support &amp; Maintenance</h2>
+    <p class="section-intro">Retainers give you a reserved block of hours each month at a reduced rate, with guaranteed response times and a dedicated point of contact who already knows your systems.</p>
+
+    <div class="retainer-grid">
+      <div class="retainer-card">
+        <div class="ret-color-bar" style="background:#334155"></div>
+        <div class="ret-tier">Tier 1</div>
+        <div class="ret-name">Watchdog</div>
+        <div class="ret-price">$350</div>
+        <div class="ret-period">per month</div>
+        <div class="ret-hours">~3 hrs/mo included · extra at $115/hr</div>
+        <div class="ret-divider"></div>
+        <ul class="ret-list">
+          <li>WordPress core, plugin &amp; theme updates</li>
+          <li>Weekly uptime monitoring</li>
+          <li>Automated offsite backups</li>
+          <li>Monthly security scan</li>
+          <li>48-hr response time for issues</li>
+          <li>Monthly status email</li>
+        </ul>
+      </div>
+
+      <div class="retainer-card">
+        <div class="ret-color-bar" style="background:var(--wp)"></div>
+        <div class="ret-tier">Tier 2</div>
+        <div class="ret-name">Guardian</div>
+        <div class="ret-price">$850</div>
+        <div class="ret-period">per month</div>
+        <div class="ret-hours">~7 hrs/mo included · extra at $110/hr</div>
+        <div class="ret-divider"></div>
+        <ul class="ret-list">
+          <li>Everything in Watchdog</li>
+          <li>Priority 24-hr response time</li>
+          <li>Performance monitoring + CWV tracking</li>
+          <li>Monthly 30-min strategy call</li>
+          <li>Minor content &amp; design edits</li>
+          <li>Quarterly security report</li>
+          <li>Plugin conflict resolution</li>
+        </ul>
+      </div>
+
+      <div class="retainer-card">
+        <div class="ret-color-bar" style="background:var(--ai)"></div>
+        <div class="ret-tier">Tier 3</div>
+        <div class="ret-name">Partner</div>
+        <div class="ret-price">$1,800</div>
+        <div class="ret-period">per month</div>
+        <div class="ret-hours">~15 hrs/mo included · extra at $105/hr</div>
+        <div class="ret-divider"></div>
+        <ul class="ret-list">
+          <li>Everything in Guardian</li>
+          <li>Priority 12-hr response time</li>
+          <li>Active dev hours (features, fixes, improvements)</li>
+          <li>Monthly 1-hr strategy + roadmap call</li>
+          <li>SEO monitoring + technical SEO fixes</li>
+          <li>MDPA / compliance monitoring</li>
+          <li>AI tool maintenance (if applicable)</li>
+          <li>Quarterly full security audit</li>
+        </ul>
+      </div>
+
+      <div class="retainer-card">
+        <div class="ret-color-bar" style="background:var(--gold)"></div>
+        <div class="ret-tier">Tier 4</div>
+        <div class="ret-name">Embedded Dev</div>
+        <div class="ret-price">$4,200</div>
+        <div class="ret-period">per month</div>
+        <div class="ret-hours">~40 hrs/mo · effectively part-time</div>
+        <div class="ret-divider"></div>
+        <ul class="ret-list">
+          <li>Everything in Partner</li>
+          <li>Priority same-day response</li>
+          <li>Dedicated dev capacity for new features</li>
+          <li>Slack/Teams direct access during business hours</li>
+          <li>Weekly sync call</li>
+          <li>Covers WordPress + AI + Security work</li>
+          <li>Annual architecture review</li>
+          <li>Best fit for agencies &amp; growing startups</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:18px; background:var(--surface); border:1px solid var(--border); border-radius:10px; padding:16px 22px; display:flex; gap:16px; align-items:start;">
+      <span style="font-size:20px; flex-shrink:0;">📋</span>
+      <div>
+        <div style="font-weight:600; font-size:13.5px; color:#fff; margin-bottom:4px;">Retainer Terms</div>
+        <p style="font-size:12.5px; color:var(--dim); line-height:1.6;">Retainers are billed monthly. Unused hours do not roll over but can be applied to a prepaid hour bank at the discounted retainer rate. Retainers require a 3-month minimum commitment. Cancellation with 30 days notice after the initial term.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: À LA CARTE ADD-ONS -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-rate">Add-Ons</span>
+    <h2>À La Carte Services</h2>
+    <p class="section-intro">Standalone deliverables that can be added to any project or purchased independently.</p>
+
+    <div class="addon-grid">
+      <div class="addon-card">
+        <div class="addon-icon">⚡</div>
+        <div>
+          <div class="addon-name">Performance Optimization</div>
+          <div class="addon-price">$650</div>
+          <div class="addon-desc">Core Web Vitals audit + implementation. Target: 90+ PageSpeed on desktop and mobile. Covers caching, image optimization, CDN setup, and asset delivery.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🗺️</div>
+        <div>
+          <div class="addon-name">Local SEO Setup</div>
+          <div class="addon-price">$550</div>
+          <div class="addon-desc">Google Business Profile optimization, local schema markup, NAP consistency audit, and on-page local keyword implementation for Boston/Worcester area businesses.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🤖</div>
+        <div>
+          <div class="addon-name">Schema &amp; AEO Markup</div>
+          <div class="addon-price">$475</div>
+          <div class="addon-desc">Full structured data implementation: Person, Organization, FAQ, HowTo, Article, and BreadcrumbList schema — optimized for Google rich results and AI engine citations.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🔄</div>
+        <div>
+          <div class="addon-name">Site Migration</div>
+          <div class="addon-price">$750</div>
+          <div class="addon-desc">Full WordPress migration between hosts with zero downtime, DNS management, SSL transfer, and post-migration testing. Includes 30-day monitoring period.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🧩</div>
+        <div>
+          <div class="addon-name">Custom Gutenberg Block</div>
+          <div class="addon-price">$950</div>
+          <div class="addon-desc">A single fully custom Gutenberg block with editor controls, frontend rendering, and full FSE compatibility. Additional blocks at $650/each.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">📋</div>
+        <div>
+          <div class="addon-name">MDPA Compliance Review</div>
+          <div class="addon-price">$675</div>
+          <div class="addon-desc">WordPress-specific Massachusetts Data Privacy Act compliance audit: cookie consent, plugin telemetry, data handling practices, and remediation checklist.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🧠</div>
+        <div>
+          <div class="addon-name">AI Readiness Assessment</div>
+          <div class="addon-price">$495</div>
+          <div class="addon-desc">A 90-minute structured workshop + written report identifying your top 3 AI automation opportunities, ranked by effort and impact. Great first step before committing to a build.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🎓</div>
+        <div>
+          <div class="addon-name">WordPress CMS Training</div>
+          <div class="addon-price">$350</div>
+          <div class="addon-desc">A 2-hour live training session (remote or in-person, Worcester/Boston area) for your team covering content editing, media management, and site maintenance basics.</div>
+        </div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-icon">🔍</div>
+        <div>
+          <div class="addon-name">Technical SEO Audit</div>
+          <div class="addon-price">$575</div>
+          <div class="addon-desc">Full crawl analysis, metadata audit, Core Web Vitals, structured data gaps, crawlability issues, and a prioritized fix list. Includes Google Search Console setup if needed.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: HOW JEREMY COMPARES -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-rate">Market Position</span>
+    <h2>How This Compares</h2>
+    <p class="section-intro">Expert freelance work at 40–60% of agency rates — without sacrificing quality, communication, or accountability.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-jeremy">Jeremy Anderson</th>
+          <th>Boston Agency</th>
+          <th>Offshore Freelancer</th>
+          <th>General Freelancer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>WordPress Custom Dev</td>
+          <td class="col-jeremy" style="color:var(--gold); font-family:'DM Mono',monospace; font-size:13px;">$115/hr or project</td>
+          <td style="color:var(--muted)">$150–$250/hr</td>
+          <td style="color:var(--muted)">$25–$60/hr</td>
+          <td style="color:var(--muted)">$60–$100/hr</td>
+        </tr>
+        <tr>
+          <td>AI Consulting</td>
+          <td class="col-jeremy" style="color:var(--gold); font-family:'DM Mono',monospace; font-size:13px;">$185/hr or project</td>
+          <td style="color:var(--muted)">$250–$450/hr</td>
+          <td style="color:var(--muted)">$50–$120/hr</td>
+          <td style="color:var(--muted)">$100–$200/hr</td>
+        </tr>
+        <tr>
+          <td>Local MA / Boston presence</td>
+          <td class="col-jeremy"><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="cross">Remote only</span></td>
+          <td><span class="partial">Varies</span></td>
+        </tr>
+        <tr>
+          <td>WordPress + AI + Security combined</td>
+          <td class="col-jeremy"><span class="check">✓</span></td>
+          <td><span class="partial">Separate specialists</span></td>
+          <td><span class="cross">Rarely</span></td>
+          <td><span class="cross">Rarely</span></td>
+        </tr>
+        <tr>
+          <td>25+ years experience</td>
+          <td class="col-jeremy"><span class="check">✓</span></td>
+          <td><span class="partial">Team-dependent</span></td>
+          <td><span class="cross">Varies widely</span></td>
+          <td><span class="cross">Varies</span></td>
+        </tr>
+        <tr>
+          <td>Direct communication (no account mgr)</td>
+          <td class="col-jeremy"><span class="check">✓</span></td>
+          <td><span class="cross">Account manager layer</span></td>
+          <td><span class="check">✓</span></td>
+          <td><span class="check">✓</span></td>
+        </tr>
+        <tr>
+          <td>MDPA / MA compliance expertise</td>
+          <td class="col-jeremy"><span class="check">✓</span></td>
+          <td><span class="partial">Some</span></td>
+          <td><span class="cross">No</span></td>
+          <td><span class="cross">No</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECTION 8: FAQ / OBJECTIONS -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-inner">
+    <span class="section-tag tag-rate">FAQ</span>
+    <h2>Common Questions</h2>
+    <p class="section-intro" style="margin-bottom:24px;">Answers to the questions most clients ask before signing on.</p>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Do you require a deposit?</div>
+        <div class="faq-a">Yes — project work requires a 50% deposit before work begins, with the remainder due upon delivery. Retainers are billed monthly in advance. Hourly work is invoiced bi-weekly or at project completion for engagements under 10 hours.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can you work with our existing WordPress site or do we need to start fresh?</div>
+        <div class="faq-a">Either is fine. Most clients come with an existing site that needs improvements, custom features, or security work. I'm comfortable stepping into any existing WordPress codebase, auditing what's there, and working with (or replacing) what makes sense.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">We're a small business on a tight budget. Are these prices flexible?</div>
+        <div class="faq-a">Project scopes are adjustable. If a full custom platform isn't in the budget right now, I can often find a smaller starting point — a focused plugin, a single landing page, or a retainer that grows over time. The best approach is a 30-minute discovery call to figure out what fits. I'd rather build something right-sized than oversell scope you don't need.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What's the typical timeline from first contact to project start?</div>
+        <div class="faq-a">Usually 1–2 weeks from initial contact to a signed proposal, depending on the complexity of the scope. I run a short discovery call (30–60 min), build a written proposal within 3 business days, and can typically start within 1–2 weeks of signing. Availability permitting — I take on a limited number of active projects at a time to ensure quality.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you offer in-person meetings in the Boston or Worcester area?</div>
+        <div class="faq-a">Yes — for clients in the Greater Boston and Worcester areas, in-person discovery sessions and kickoff meetings are available. Ongoing work is typically handled remotely. Day trips to client offices for workshops or training are available and included in the hourly rate (no travel surcharge within 50 miles of Shrewsbury).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if my AI project turns out to be more complex than scoped?</div>
+        <div class="faq-a">All fixed-fee projects include a scope document signed before work begins. If genuinely new requirements emerge mid-project, we discuss them openly — I'll provide a change order estimate. I don't charge for my own misestimates. AI projects in particular get extra scoping attention upfront precisely because the scope can evolve.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="section">
+  <div class="section-inner">
+    <div class="cta-box">
+      <h3>Ready to Talk?</h3>
+      <p>Every engagement starts with a free 30-minute discovery call. No pressure, no pitch — just a clear-eyed conversation about what you're building and whether we're the right fit.</p>
+      <div class="cta-buttons">
+        <a href="mailto:info@jeremyanderson.tech" class="btn-primary">📧 Email Jeremy →</a>
+        <a href="https://jeremyanderson.tech/about" class="btn-secondary">Learn More About Jeremy</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <p>jeremyanderson.tech · Services &amp; Pricing Guide · Boston / Worcester, MA · Updated March 2026 · Rates subject to change with 30 days notice for existing clients</p>
+</div>
+
+</body>
+</html>

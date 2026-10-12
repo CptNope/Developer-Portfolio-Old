@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-packages",
+	"version": "1.0.0",
+	"title": "Services Packages",
+	"category": "theme",
+	"icon": "grid-view",
+	"description": "Three-column package tier cards pulling from a chosen service category.",
+	"keywords": [ "packages", "pricing", "tiers", "services" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionTag": {
+			"type": "string",
+			"default": "WordPress Development"
+		},
+		"sectionTagType": {
+			"type": "string",
+			"default": "wp"
+		},
+		"heading": {
+			"type": "string",
+			"default": "WordPress Project Packages"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Fixed-fee packages for defined deliverables. Scope is documented and agreed before work begins. Includes one round of revisions unless noted otherwise."
+		},
+		"category": {
+			"type": "string",
+			"default": "wordpress-packages"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

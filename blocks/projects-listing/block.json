@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/projects-listing",
+	"version": "1.0.0",
+	"title": "Projects Listing",
+	"category": "theme",
+	"icon": "portfolio",
+	"description": "Full projects page listing with hero header, project grid, and pagination.",
+	"keywords": [ "projects", "portfolio", "listing", "archive" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// projects"
+		},
+		"heading": {
+			"type": "string",
+			"default": "All Projects"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Projects"
+		},
+		"description": {
+			"type": "string",
+			"default": "A collection of applications, tools, and experiments I've built."
+		},
+		"category": {
+			"type": "string",
+			"default": ""
+		},
+		"isHero": {
+			"type": "boolean",
+			"default": true
+		},
+		"perPage": {
+			"type": "number",
+			"default": 9
+		},
+		"columns": {
+			"type": "number",
+			"default": 2
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

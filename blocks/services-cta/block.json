@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-cta",
+	"version": "1.0.0",
+	"title": "Services CTA",
+	"category": "theme",
+	"icon": "megaphone",
+	"description": "Call to action box for the services page with two buttons.",
+	"keywords": [ "cta", "call to action", "services", "contact" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Ready to Talk?"
+		},
+		"description": {
+			"type": "string",
+			"default": "Every engagement starts with a free 30-minute discovery call. No pressure, no pitch — just a clear-eyed conversation about what you're building and whether we're the right fit."
+		},
+		"primaryButtonText": {
+			"type": "string",
+			"default": "Email Jeremy →"
+		},
+		"primaryButtonUrl": {
+			"type": "string",
+			"default": "mailto:info@jeremyanderson.tech"
+		},
+		"secondaryButtonText": {
+			"type": "string",
+			"default": "Learn More About Jeremy"
+		},
+		"secondaryButtonUrl": {
+			"type": "string",
+			"default": "/about"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

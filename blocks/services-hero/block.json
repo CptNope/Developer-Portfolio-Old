@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-hero",
+	"version": "1.0.0",
+	"title": "Services Hero",
+	"category": "theme",
+	"icon": "megaphone",
+	"description": "Full-width hero header for the services and pricing page.",
+	"keywords": [ "services", "hero", "pricing", "header" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"eyebrow": {
+			"type": "string",
+			"default": "jeremyanderson.tech · Boston / Worcester, MA · 2026"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Services &"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Pricing Guide"
+		},
+		"subtitle": {
+			"type": "string",
+			"default": "Market-calibrated rates for custom WordPress development, AI consulting, cybersecurity hardening, and ongoing support — serving Boston, Worcester, and the greater Massachusetts area."
+		},
+		"chips": {
+			"type": "string",
+			"default": "[\"25+ Years Experience\",\"Based in Shrewsbury, MA\",\"Serving Boston · Worcester · New England\",\"Available Remotely\"]"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

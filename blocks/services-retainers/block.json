@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-retainers",
+	"version": "1.0.0",
+	"title": "Services Retainers",
+	"category": "theme",
+	"icon": "backup",
+	"description": "Monthly retainer tier cards pulling from the Services CPT.",
+	"keywords": [ "retainer", "monthly", "support", "maintenance", "pricing" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionTag": {
+			"type": "string",
+			"default": "Monthly Retainers"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Ongoing Support & Maintenance"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Retainers give you a reserved block of hours each month at a reduced rate, with guaranteed response times and a dedicated point of contact who already knows your systems."
+		},
+		"category": {
+			"type": "string",
+			"default": "monthly-retainers"
+		},
+		"retainerTermsTitle": {
+			"type": "string",
+			"default": "Retainer Terms"
+		},
+		"retainerTermsText": {
+			"type": "string",
+			"default": "Retainers are billed monthly. Unused hours do not roll over but can be applied to a prepaid hour bank at the discounted retainer rate. Retainers require a 3-month minimum commitment. Cancellation with 30 days notice after the initial term."
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

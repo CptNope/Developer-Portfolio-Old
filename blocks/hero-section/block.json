@@ -1,0 +1,60 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/hero-section",
+	"version": "1.0.0",
+	"title": "Hero Section",
+	"category": "theme",
+	"icon": "superhero-alt",
+	"description": "Full-screen hero with name, role, description, and CTA buttons.",
+	"keywords": [ "hero", "banner", "intro" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"badgeText": {
+			"type": "string",
+			"default": "Available for freelance work"
+		},
+		"name": {
+			"type": "string",
+			"default": "Jeremy Anderson"
+		},
+		"role": {
+			"type": "string",
+			"default": "{ Software Architect }"
+		},
+		"description": {
+			"type": "string",
+			"default": "I design and build secure, accessible, and compliant web platforms, AI-assisted systems, and custom software solutions. My work focuses on clean architecture, practical automation, and leveraging modern technologies to solve real-world problems."
+		},
+		"primaryButtonText": {
+			"type": "string",
+			"default": "View My Work"
+		},
+		"primaryButtonUrl": {
+			"type": "string",
+			"default": "/projects"
+		},
+		"secondaryButtonText": {
+			"type": "string",
+			"default": "About Me"
+		},
+		"secondaryButtonUrl": {
+			"type": "string",
+			"default": "/about"
+		},
+		"roles": {
+			"type": "string",
+			"default": "Full-Stack Developer, WordPress Engineer, AI Systems Builder, Cybersecurity Specialist, Cloud Architect"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

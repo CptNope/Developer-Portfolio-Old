@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-addons",
+	"version": "1.0.0",
+	"title": "Services Add-Ons",
+	"category": "theme",
+	"icon": "plus-alt",
+	"description": "Grid of à la carte add-on services pulling from the Services CPT.",
+	"keywords": [ "addons", "add-ons", "services", "extras" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionTag": {
+			"type": "string",
+			"default": "Add-Ons"
+		},
+		"heading": {
+			"type": "string",
+			"default": "À La Carte Services"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Standalone deliverables that can be added to any project or purchased independently."
+		},
+		"category": {
+			"type": "string",
+			"default": "add-ons"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/contact-cta",
+	"version": "1.0.0",
+	"title": "Contact CTA",
+	"category": "theme",
+	"icon": "email",
+	"description": "Call to action section with heading, description, and contact button.",
+	"keywords": [ "contact", "cta", "call to action", "email" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Let's Build Something"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Amazing"
+		},
+		"description": {
+			"type": "string",
+			"default": "Got a project in mind? I'm always open to discussing new opportunities, collaborations, and interesting ideas."
+		},
+		"buttonText": {
+			"type": "string",
+			"default": "Get In Touch ↗"
+		},
+		"buttonUrl": {
+			"type": "string",
+			"default": "mailto:info@jeremyanderson.tech"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

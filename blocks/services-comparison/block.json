@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-comparison",
+	"version": "1.0.0",
+	"title": "Services Comparison",
+	"category": "theme",
+	"icon": "editor-table",
+	"description": "Comparison table showing how Jeremy compares to agencies and freelancers.",
+	"keywords": [ "comparison", "table", "competitor", "market" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionTag": {
+			"type": "string",
+			"default": "Market Position"
+		},
+		"heading": {
+			"type": "string",
+			"default": "How This Compares"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Expert freelance work at 40–60% of agency rates — without sacrificing quality, communication, or accountability."
+		},
+		"columns": {
+			"type": "string",
+			"default": "[\"\",\"Jeremy Anderson\",\"Boston Agency\",\"Offshore Freelancer\",\"General Freelancer\"]"
+		},
+		"rows": {
+			"type": "string",
+			"default": "[{\"label\":\"WordPress Custom Dev\",\"cells\":[\"$115/hr or project\",\"$150–$250/hr\",\"$25–$60/hr\",\"$60–$100/hr\"],\"types\":[\"gold\",\"muted\",\"muted\",\"muted\"]},{\"label\":\"AI Consulting\",\"cells\":[\"$185/hr or project\",\"$250–$450/hr\",\"$50–$120/hr\",\"$100–$200/hr\"],\"types\":[\"gold\",\"muted\",\"muted\",\"muted\"]},{\"label\":\"Local MA / Boston presence\",\"cells\":[\"✓\",\"✓\",\"Remote only\",\"Varies\"],\"types\":[\"check\",\"check\",\"cross\",\"partial\"]},{\"label\":\"WordPress + AI + Security combined\",\"cells\":[\"✓\",\"Separate specialists\",\"Rarely\",\"Rarely\"],\"types\":[\"check\",\"partial\",\"cross\",\"cross\"]},{\"label\":\"25+ years experience\",\"cells\":[\"✓\",\"Team-dependent\",\"Varies widely\",\"Varies\"],\"types\":[\"check\",\"partial\",\"cross\",\"cross\"]},{\"label\":\"Direct communication (no account mgr)\",\"cells\":[\"✓\",\"Account manager layer\",\"✓\",\"✓\"],\"types\":[\"check\",\"cross\",\"check\",\"check\"]},{\"label\":\"MDPA / MA compliance expertise\",\"cells\":[\"✓\",\"Some\",\"No\",\"No\"],\"types\":[\"check\",\"partial\",\"cross\",\"cross\"]}]"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

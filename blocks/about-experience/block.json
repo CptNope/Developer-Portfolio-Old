@@ -1,0 +1,64 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/about-experience",
+	"version": "1.0.0",
+	"title": "About Experience",
+	"category": "theme",
+	"icon": "portfolio",
+	"description": "Work experience timeline with education and achievements cards.",
+	"keywords": [ "experience", "work", "education", "achievements", "timeline" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "wide"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// experience"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Where I've Worked"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Worked"
+		},
+		"jobs": {
+			"type": "string",
+			"default": "[{\"role\":\"AI Consultant & Developer\",\"period\":\"2023 – Present\",\"company\":\"SciStories\",\"description\":\"Designing and developing AI-assisted systems, custom web platforms, and tools that support research labs and scientific communication. My work includes building custom WordPress platforms, plugin development, automation workflows, and integrating AI systems into modern web infrastructure.\"},{\"role\":\"Software Consultant & Custom Developer\",\"period\":\"2024 – Present\",\"company\":\"Worcester Restaurant Group\",\"description\":\"Developing custom software and digital tools to support restaurant operations, training systems, and internal workflows. This work includes AI-assisted training applications, web-based systems, and operational automation tools.\"},{\"role\":\"Digital Game Systems Consultant\",\"period\":\"2024 – Present\",\"company\":\"Librarium Games\",\"description\":\"Consulting on the development of digital versions of tabletop and board games. Work includes translating physical gameplay mechanics into interactive digital systems and developing supporting web technologies.\"},{\"role\":\"Independent Full-Stack Developer\",\"period\":\"2016 – Present\",\"company\":\"Freelance / Contract Work\",\"description\":\"Developing custom web platforms, WordPress themes and plugins, and full-stack applications for a range of clients including research labs, agencies, and businesses. Technologies include JavaScript, React, Node.js, PHP, and modern web infrastructure.\"},{\"role\":\"Co-Owner & Developer\",\"period\":\"1998 – 2003\",\"company\":\"AndersonGraf Technologies — San Antonio, Texas\",\"description\":\"Co-founded an IT and web development company providing technical services, custom websites, and early internet infrastructure support for local businesses during the early growth of the commercial web.\"}]"
+		},
+		"eduEmoji": {
+			"type": "string",
+			"default": "🎓"
+		},
+		"eduTitle": {
+			"type": "string",
+			"default": "Education"
+		},
+		"eduItems": {
+			"type": "string",
+			"default": "[{\"title\":\"Studying Computer Science\",\"subtitle\":\"Harvard, 2023-Present\"},{\"title\":\"W3C / WAI Web Accessibility\",\"subtitle\":\"Professional Certification, 2022\"}]"
+		},
+		"achieveEmoji": {
+			"type": "string",
+			"default": "🏆"
+		},
+		"achieveTitle": {
+			"type": "string",
+			"default": "Achievements"
+		},
+		"achieveItems": {
+			"type": "string",
+			"default": "[{\"title\":\"GitHub Star 2025\",\"subtitle\":\"Recognized for open source contributions\"},{\"title\":\"ReactConf Speaker 2024\",\"subtitle\":\"Talk: \\\"Scaling React for Enterprise\\\"\"}]"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

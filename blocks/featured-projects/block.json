@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/featured-projects",
+	"version": "1.0.0",
+	"title": "Featured Projects",
+	"category": "theme",
+	"icon": "portfolio",
+	"description": "Display selected projects from the Projects CPT.",
+	"keywords": [ "projects", "portfolio", "featured", "work" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// featured work"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Recent Projects"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Projects"
+		},
+		"linkText": {
+			"type": "string",
+			"default": "View all projects →"
+		},
+		"linkUrl": {
+			"type": "string",
+			"default": "/projects"
+		},
+		"postIds": {
+			"type": "string",
+			"default": "[]"
+		},
+		"count": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

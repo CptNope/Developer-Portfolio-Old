@@ -1,0 +1,36 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/social-links",
+	"version": "1.0.0",
+	"title": "Social Links",
+	"category": "theme",
+	"icon": "share",
+	"description": "Editable social media icon links.",
+	"keywords": [ "social", "links", "footer", "github", "linkedin" ],
+	"supports": {
+		"html": false,
+		"align": false
+	},
+	"attributes": {
+		"githubUrl": {
+			"type": "string",
+			"default": "https://github.com/CptNope?tab=repositories"
+		},
+		"linkedinUrl": {
+			"type": "string",
+			"default": "https://www.linkedin.com/in/jeremy-anderson-53963b222/"
+		},
+		"xUrl": {
+			"type": "string",
+			"default": "https://x.com/JeremyA59964523"
+		},
+		"emailUrl": {
+			"type": "string",
+			"default": "mailto:info@jeremyanderson.tech"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/latest-posts",
+	"version": "1.0.0",
+	"title": "Latest Posts",
+	"category": "theme",
+	"icon": "admin-post",
+	"description": "Display selected blog posts.",
+	"keywords": [ "blog", "posts", "articles", "latest" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// latest posts"
+		},
+		"heading": {
+			"type": "string",
+			"default": "From the Blog"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Blog"
+		},
+		"linkText": {
+			"type": "string",
+			"default": "Read all posts →"
+		},
+		"linkUrl": {
+			"type": "string",
+			"default": "/blog"
+		},
+		"postIds": {
+			"type": "string",
+			"default": "[]"
+		},
+		"count": {
+			"type": "number",
+			"default": 3
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

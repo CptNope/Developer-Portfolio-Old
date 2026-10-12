@@ -1,0 +1,96 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/about-intro",
+	"version": "1.0.0",
+	"title": "About Intro",
+	"category": "theme",
+	"icon": "id-alt",
+	"description": "About page intro with bio, image, location, and stats grid.",
+	"keywords": [ "about", "bio", "stats", "introduction" ],
+	"supports": {
+		"html": false,
+		"align": [ "wide", "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "wide"
+		},
+		"sectionLabel": {
+			"type": "string",
+			"default": "// about me"
+		},
+		"heading": {
+			"type": "string",
+			"default": "The Developer Behind the Code"
+		},
+		"headingHighlight": {
+			"type": "string",
+			"default": "Developer"
+		},
+		"imageUrl": {
+			"type": "string",
+			"default": "https://images.unsplash.com/photo-1719400471588-575b23e27bd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjB3b3Jrc3BhY2UlMjBkYXJrJTIwY29kaW5nfGVufDF8fHx8MTc3MjExNjI4NHww&ixlib=rb-4.1.0&q=80&w=1080"
+		},
+		"imageAlt": {
+			"type": "string",
+			"default": "Jeremy Anderson"
+		},
+		"location": {
+			"type": "string",
+			"default": "Boston/Worcester, MA"
+		},
+		"greeting": {
+			"type": "string",
+			"default": "Hi, I'm Jeremy."
+		},
+		"bio1": {
+			"type": "string",
+			"default": "I'm a full-stack developer, AI consultant, and cybersecurity specialist with a long-standing background in web technology and software development. My experience in computer science and web development dates back to 1998, when I co-founded AndersonGraf Technologies in San Antonio, Texas, where we provided IT services and custom web development for local businesses."
+		},
+		"bio2": {
+			"type": "string",
+			"default": "Today, I work with SciStories, where I serve as an AI consultant and developer, helping design and build intelligent systems, custom web platforms, and tools that support research labs and scientific communication."
+		},
+		"bio3": {
+			"type": "string",
+			"default": "I also collaborate with Librarium Games, consulting on and developing digital versions of tabletop and board games, translating physical gameplay systems into interactive digital experiences."
+		},
+		"bio4": {
+			"type": "string",
+			"default": "In addition, I currently work with Worcester Restaurant Group, where I provide software consulting and custom development, helping design tools and digital systems that support training, operations, and internal workflows."
+		},
+		"bio5": {
+			"type": "string",
+			"default": "A significant portion of my work involves custom WordPress development, including building themes, plugins, and tailored functionality for complex sites. I regularly develop systems using technologies such as JavaScript, React, TypeScript, Node.js, and PHP, along with AI-assisted tools, automation workflows, and secure infrastructure."
+		},
+		"bio6": {
+			"type": "string",
+			"default": "My work often sits at the intersection of web engineering, cybersecurity, and applied AI, allowing me to design platforms that are scalable, maintainable, and secure."
+		},
+		"bio7": {
+			"type": "string",
+			"default": "Outside of client work, I contribute to open-source projects and explore emerging technologies including AI systems, developer tooling, and interactive web applications."
+		},
+		"bio8": {
+			"type": "string",
+			"default": "I'm currently open to technical consulting and collaborative development projects. If you're building something ambitious and need custom development or AI-driven solutions, I'd be happy to connect."
+		},
+		"stat1Emoji": { "type": "string", "default": "💻" },
+		"stat1Number": { "type": "string", "default": "25+" },
+		"stat1Label": { "type": "string", "default": "Years Working with Computers & Web Technology\n\n(1998 – Present)" },
+		"stat2Emoji": { "type": "string", "default": "🧰" },
+		"stat2Number": { "type": "string", "default": "100+" },
+		"stat2Label": { "type": "string", "default": "Websites, Systems & Projects Built\n\n(WordPress, web apps, internal tools, plugins, prototypes)" },
+		"stat3Emoji": { "type": "string", "default": "🧠" },
+		"stat3Number": { "type": "string", "default": "40+" },
+		"stat3Label": { "type": "string", "default": "Custom Software & Automation Tools\n\n(AI tools, plugins, apps, and internal systems)" },
+		"stat4Emoji": { "type": "string", "default": "☕" },
+		"stat4Number": { "type": "string", "default": "∞" },
+		"stat4Label": { "type": "string", "default": "Cups of Coffee Consumed While Debugging" }
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

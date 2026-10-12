@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-faq",
+	"version": "1.0.0",
+	"title": "Services FAQ",
+	"category": "theme",
+	"icon": "editor-help",
+	"description": "FAQ section with collapsible questions and answers, plus FAQPage schema output.",
+	"keywords": [ "faq", "questions", "answers", "services" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionTag": {
+			"type": "string",
+			"default": "FAQ"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Common Questions"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Answers to the questions most clients ask before signing on."
+		},
+		"items": {
+			"type": "string",
+			"default": "[{\"q\":\"Do you require a deposit?\",\"a\":\"Yes — project work requires a 50% deposit before work begins, with the remainder due upon delivery. Retainers are billed monthly in advance. Hourly work is invoiced bi-weekly or at project completion for engagements under 10 hours.\"},{\"q\":\"Can you work with our existing WordPress site or do we need to start fresh?\",\"a\":\"Either is fine. Most clients come with an existing site that needs improvements, custom features, or security work. I'm comfortable stepping into any existing WordPress codebase, auditing what's there, and working with (or replacing) what makes sense.\"},{\"q\":\"We're a small business on a tight budget. Are these prices flexible?\",\"a\":\"Project scopes are adjustable. If a full custom platform isn't in the budget right now, I can often find a smaller starting point — a focused plugin, a single landing page, or a retainer that grows over time. The best approach is a 30-minute discovery call to figure out what fits. I'd rather build something right-sized than oversell scope you don't need.\"},{\"q\":\"What's the typical timeline from first contact to project start?\",\"a\":\"Usually 1–2 weeks from initial contact to a signed proposal, depending on the complexity of the scope. I run a short discovery call (30–60 min), build a written proposal within 3 business days, and can typically start within 1–2 weeks of signing. Availability permitting — I take on a limited number of active projects at a time to ensure quality.\"},{\"q\":\"Do you offer in-person meetings in the Boston or Worcester area?\",\"a\":\"Yes — for clients in the Greater Boston and Worcester areas, in-person discovery sessions and kickoff meetings are available. Ongoing work is typically handled remotely. Day trips to client offices for workshops or training are available and included in the hourly rate (no travel surcharge within 50 miles of Shrewsbury).\"},{\"q\":\"What if my AI project turns out to be more complex than scoped?\",\"a\":\"All fixed-fee projects include a scope document signed before work begins. If genuinely new requirements emerge mid-project, we discuss them openly — I'll provide a change order estimate. I don't charge for my own misestimates. AI projects in particular get extra scoping attention upfront precisely because the scope can evolve.\"}]"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/services-pricing-table",
+	"version": "1.0.0",
+	"title": "Services Pricing Table",
+	"category": "theme",
+	"icon": "editor-table",
+	"description": "Hourly rates pricing table pulling from the Services CPT.",
+	"keywords": [ "pricing", "rates", "hourly", "table", "services" ],
+	"supports": {
+		"html": false,
+		"align": [ "full" ]
+	},
+	"attributes": {
+		"align": {
+			"type": "string",
+			"default": "full"
+		},
+		"sectionTag": {
+			"type": "string",
+			"default": "Hourly Rates"
+		},
+		"heading": {
+			"type": "string",
+			"default": "Consulting & Development Hours"
+		},
+		"intro": {
+			"type": "string",
+			"default": "Hourly billing works best for audits, troubleshooting, open-ended consulting, and any project where scope is still being defined. Hours are tracked and reported transparently."
+		},
+		"category": {
+			"type": "string",
+			"default": "hourly-rates"
+		},
+		"volumeDiscountTitle": {
+			"type": "string",
+			"default": "💡 Volume Discount"
+		},
+		"volumeDiscountText": {
+			"type": "string",
+			"default": "Blocks of <strong>20+ prepaid hours</strong> receive a <strong>10% discount</strong> off the applicable hourly rate. Hours remain valid for 90 days. Ideal for clients with ongoing ad-hoc work across multiple service areas."
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}

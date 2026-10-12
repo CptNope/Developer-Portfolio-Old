@@ -1,0 +1,43 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "developer-portfolio/site-header",
+	"version": "1.0.0",
+	"title": "Site Header",
+	"category": "theme",
+	"icon": "menu",
+	"description": "Editable site header with navigation and CTA button.",
+	"keywords": [ "header", "navigation", "menu", "nav" ],
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"siteTitle": {
+			"type": "string",
+			"default": ""
+		},
+		"logoId": {
+			"type": "number",
+			"default": 0
+		},
+		"faviconId": {
+			"type": "number",
+			"default": 0
+		},
+		"navItems": {
+			"type": "string",
+			"default": "[{\"label\":\"Home\",\"url\":\"/\"},{\"label\":\"About\",\"url\":\"/about\"},{\"label\":\"Blog\",\"url\":\"/blog\"},{\"label\":\"Projects\",\"url\":\"/projects\"},{\"label\":\"Services\",\"url\":\"/services\"}]"
+		},
+		"ctaText": {
+			"type": "string",
+			"default": "Let's Talk"
+		},
+		"ctaUrl": {
+			"type": "string",
+			"default": "mailto:info@jeremyanderson.tech"
+		}
+	},
+	"textdomain": "developer-portfolio",
+	"editorScript": "file:./edit.js",
+	"render": "file:./render.php"
+}
